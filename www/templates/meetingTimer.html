@@ -21,21 +21,20 @@
             </label>
             <label class="item item-input">
                 <span class="input-label">Daily rate</span>
+                <i class="icon ion-social-euro placeholder-icon"></i>
                 <input  type="text"
                         ng-model="dailyRate"
                         ng-change="setDailyRate(dailyRate)"
                         ng-disabled="timerIsRunning">
             </label>
         </form>
-        <div style="width: 320px; height: 20px;" class="spacer"></div>
         <div class="row">
             <div class="col myCenter">
-                <h3>Cost per minute: {{costsPerMinute}} €</h3>
-                <h3>Estimated costs: {{estimatedCosts}} €</h3>
-                <mytimer id="myTimerElement">
-                    <p style="font-size: 300%; padding:50px 0 40px 0;">{{hours}}:{{minutes}}:{{seconds}}</p>
-                    <div style="font-size:300%;padding:0; line-height: 1.2">
-                        Current cost: <br>
+                <h3 class="grey">Cost per minute: {{costsPerMinute}} €</h3>
+                <h3 class="grey">Estimated costs: {{estimatedCosts}} €</h3>
+                <mytimer id="myTimerElement" max="durationList.value">
+                    <p style="font-size: 300%; padding:25px 0 40px 0; {{timerColor}}">{{hours}}:{{minutes}}:{{seconds}}</p>
+                    <div style="font-size:350%;padding:0; line-height: 1.2">
                         {{meetingCosts}} €
                     </div>
                 </mytimer>
@@ -48,4 +47,5 @@
     <span ng-show="timerIsRunning == true">Stop Timer</span>
     <span ng-hide="timerIsRunning == true">Start Timer</span>
   </button>
+  <a class="button button-calm ion-information-circled" ng-href="#/about"></a>
 </div>

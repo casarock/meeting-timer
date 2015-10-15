@@ -24,10 +24,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .myCenter {
     text-align: center;
 }
+.bar-footer {
+    height: 100px;
+}
 
 button.bar-fullsize {
-    font-size: 175%!important;
+    font-size: 200%!important;
     width:100%;
     margin:0;
     border: none;
+}
+
+.grey {
+    color:#ccc;
 }

@@ -60,7 +60,6 @@ angular.module('app.controllers', ['mytimer'])
     $scope.costs = 0;
     $scope.estimatedCosts = 0;
     $scope.costsPerMinute = 0;
-    $scope.timerIsRunning = false;
 
     calculateCosts();
 
@@ -90,18 +89,26 @@ angular.module('app.controllers', ['mytimer'])
     };
 
     $scope.setMembers = function(members) {
-        $scope.participants = members.value;
-        calculateCosts();
+        if(!$scope.timerIsRunning) {
+            $scope.participants = members.value;
+            calculateCosts();
+        }
     };
 
     $scope.setDurationTime = function(duration) {
-        $scope.meetingDuration = duration.value;
-        calculateCosts();
+        if(!$scope.timerIsRunning) {
+            $scope.meetingDuration = duration.value;
+            calculateCosts();
+        }
     };
 
     function calculateCosts() {
         var cpm = $scope.participants * ($scope.dailyRate/8/60);
-        $scope.costsPerMinute = ($scope.participants * ($scope.dailyRate/8/60)).toFixed(2);
+        $scope.costsPerMinute = cpm.toFixed(2);
         $scope.estimatedCosts = ($scope.meetingDuration * cpm).toFixed(2);
     }
+})
+
+.controller('aboutCtrl', function($scope) {
+    console.log("about");
 });
